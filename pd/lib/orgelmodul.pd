@@ -1,0 +1,105 @@
+#N canvas 1920 2 712 909 12;
+#X listbox 341 695 20 0 0 0 - - - 0;
+#X obj 341 641 list prepend list;
+#X obj 341 666 list trim;
+#X obj 1 1 cnv 15 300 820 empty empty \$2 20 24 0 18 #404040 #00ff04
+0;
+#X obj 23 119 vsl16 \$1 \$2 level;
+#X obj 169 22 nbx 5 14 -1e+37 1e+37 0 0 \$1-\$2-base-freq \$1-\$2-base-freq
+base-freq 60 8 0 10 #bbbbbb #000000 #00ff04 0 256;
+#X obj 23 317 vsl16 \$1 \$2 delay;
+#X obj 23 485 vsl16 \$1 \$2 q;
+#X obj 23 653 vsl16 \$1 \$2 gain;
+#X obj 341 616 r \$1-ctl;
+#N canvas 266 8 685 1005 ctl-dispatch 0;
+#X obj 16 9 ctl-dispatch \$1 \$2 base-freq;
+#X obj 16 34 ctl-dispatch \$1 \$2 ramp-up;
+#X obj 16 58 ctl-dispatch \$1 \$2 ramp-down;
+#X obj 16 82 ctl-dispatch \$1 \$2 min-amp;
+#X obj 16 106 ctl-dispatch \$1 \$2 max-amp;
+#X obj 17 129 ctl-dispatch \$1 \$2 exp-base;
+#X obj 17 153 ctl-dispatch \$1 \$2 bias;
+#X obj 18 177 ctl-dispatch \$1 \$2 main;
+#X obj 18 200 ctl-dispatch \$1 \$2 phase;
+#X restore 333 21 pd ctl-dispatch;
+#X obj 338 67 adc~ 1;
+#X obj 341 521 dac~ 1;
+#X obj 23 56 nbx 7 14 -1e+37 1e+37 0 0 \$1-\$2-ramp-up \$1-\$2-ramp-up
+ramp-up 75 8 0 10 #bbbbbb #000000 #00ff04 0 256;
+#X obj 23 76 nbx 7 14 -1e+37 1e+37 0 0 \$1-\$2-ramp-down \$1-\$2-ramp-down
+ramp-down 75 8 0 10 #bbbbbb #000000 #00ff04 0 256;
+#X obj 169 76 nbx 5 14 -1e+37 1e+37 0 0 \$1-\$2-min-amp \$1-\$2-min-amp
+min-amp 60 8 0 10 #bbbbbb #000000 #00ff04 0 256;
+#X obj 169 56 nbx 5 14 -1e+37 1e+37 0 0 \$1-\$2-max-amp \$1-\$2-max-amp
+max-amp 60 8 0 10 #bbbbbb #000000 #00ff04 0 256;
+#X obj 23 96 nbx 7 14 -1e+37 1e+37 0 0 \$1-\$2-exp-base \$1-\$2-exp-base
+exp-base 75 8 0 10 #bbbbbb #000000 #00ff04 0 256;
+#X obj 403 145 r \$1-\$2-min-amp;
+#X obj 425 172 r \$1-\$2-max-amp;
+#X obj 359 92 r \$1-\$2-ramp-up;
+#X obj 381 119 r \$1-\$2-ramp-down;
+#X obj 447 199 r \$1-\$2-exp-base;
+#X obj 338 231 leveler~ 140 140;
+#X obj 23 925 vsl16 \$1 \$2 osc-level;
+#X obj 341 576 s \$1-ctl;
+#X msg 341 548 orgel04 level 3 64;
+#X obj 170 97 invert-switch \$1 \$2;
+#X obj 31 282 hsl 224 15 1 16 0 0 \$1-\$2-bias \$1-\$2-bias bias 196
+24 0 10 #bbbbbb #000000 #00ff04 0 1;
+#X obj 275 150 vsl 15 663 0 1 0 0 \$1-\$2-main \$1-\$2-main main -8
+-12 0 10 #7c7c7c #ff8300 #00ff04 0 1;
+#X obj 340 285 clone -s 1 orgelmodulvoice 16 \$1 \$2;
+#X obj 365 318 r \$1-\$2-phase;
+#X floatatom 365 395 5 0 0 0 - - - 0;
+#X obj 380 342 loadbang;
+#X msg 380 367 1;
+#X obj 340 420 *~ 1;
+#X obj 450 357 r \$1-\$2-main;
+#X obj 411 444 line~;
+#X obj 341 471 *~;
+#X obj 450 382 route set;
+#X msg 411 419 \$1 50;
+#X floatatom 499 409 5 0 0 0 - - - 0;
+#X obj 552 73 \$0;
+#X floatatom 552 98 5 0 0 0 - - - 0;
+#X obj 551 45 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X obj 609 75 \$1;
+#X floatatom 609 100 5 0 0 0 - - - 0;
+#X obj 607 45 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X obj 358 736 env~ 8192;
+#X obj 358 761 - 100;
+#X obj 359 790 vu 15 120 empty empty -1 -8 0 10 #404040 #000000 1 0
+;
+#X connect 1 0 2 0;
+#X connect 2 0 0 0;
+#X connect 9 0 1 0;
+#X connect 11 0 23 0;
+#X connect 18 0 23 3;
+#X connect 19 0 23 4;
+#X connect 20 0 23 1;
+#X connect 21 0 23 2;
+#X connect 22 0 23 5;
+#X connect 23 0 30 1;
+#X connect 26 0 25 0;
+#X connect 30 0 35 0;
+#X connect 30 0 48 0;
+#X connect 31 0 32 0;
+#X connect 32 0 35 1;
+#X connect 33 0 34 0;
+#X connect 34 0 32 0;
+#X connect 35 0 38 0;
+#X connect 36 0 39 0;
+#X connect 37 0 38 1;
+#X connect 38 0 12 0;
+#X connect 39 1 40 0;
+#X connect 39 1 41 0;
+#X connect 40 0 37 0;
+#X connect 42 0 43 0;
+#X connect 44 0 42 0;
+#X connect 45 0 46 0;
+#X connect 47 0 45 0;
+#X connect 48 0 49 0;
+#X connect 49 0 50 0;
+#X coords 0 -1 1 1 300 820 1 0 0;

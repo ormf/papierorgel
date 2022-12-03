@@ -1,0 +1,6 @@
+[submodule "cl-orgelctl"]
+	path = cl-orgelctl
+	url = git@10.8.0.11:orm.finnendahl/cl-orgelctl.git
+[submodule "lisp/cl-orgelctl"]
+	path = lisp/cl-orgelctl
+	url = git@10.8.0.11:orm.finnendahl/cl-orgelctl.git
