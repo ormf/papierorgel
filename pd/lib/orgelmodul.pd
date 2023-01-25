@@ -1,16 +1,31 @@
-#N canvas 1920 2 712 909 12;
-#X listbox 341 695 20 0 0 0 - - - 0;
-#X obj 341 641 list prepend list;
-#X obj 341 666 list trim;
-#X obj 1 1 cnv 15 300 820 empty empty \$2 20 24 0 18 #404040 #00ff04
+#N struct 12951-rectangle float x float c;
+#N struct 12951-pixel float x0 float y0;
+#N struct 12951-slider float x float y float w float h float c;
+#N struct 12969-rectangle float x float c;
+#N struct 12969-pixel float x0 float y0;
+#N struct 12969-slider float x float y float w float h float c;
+#N struct 12987-rectangle float x float c;
+#N struct 12987-pixel float x0 float y0;
+#N struct 12987-slider float x float y float w float h float c;
+#N struct 13016-rectangle float x float c;
+#N struct 13016-pixel float x0 float y0;
+#N struct 13016-slider float x float y float w float h float c;
+#N struct 13197-rectangle float x float c;
+#N struct 13197-pixel float x0 float y0;
+#N struct 13197-slider float x float y float w float h float c;
+#N struct 13199-slider float x float y float w float h float c;
+#N canvas 1981 2 1279 1012 12;
+#X listbox 334 495 20 0 0 0 - - - 0;
+#X obj 334 441 list prepend list;
+#X obj 334 466 list trim;
+#X obj 0 0 cnv 15 300 1020 empty empty \$2 20 24 0 18 #404040 #00ff04
 0;
-#X obj 23 119 vsl16 \$1 \$2 level;
-#X obj 169 22 nbx 5 14 -1e+37 1e+37 0 0 \$1-\$2-base-freq \$1-\$2-base-freq
+#X obj 162 22 nbx 5 14 -1e+37 1e+37 0 0 \$1-\$2-base-freq \$1-\$2-base-freq
 base-freq 60 8 0 10 #bbbbbb #000000 #00ff04 0 256;
-#X obj 23 317 vsl16 \$1 \$2 delay;
-#X obj 23 485 vsl16 \$1 \$2 q;
-#X obj 23 653 vsl16 \$1 \$2 gain;
-#X obj 341 616 r \$1-ctl;
+#X obj 16 388 vsl16 \$1 \$2 delay;
+#X obj 16 556 vsl16 \$1 \$2 q;
+#X obj 16 724 vsl16 \$1 \$2 gain;
+#X obj 334 416 r \$1-ctl;
 #N canvas 266 8 685 1005 ctl-dispatch 0;
 #X obj 16 9 ctl-dispatch \$1 \$2 base-freq;
 #X obj 16 34 ctl-dispatch \$1 \$2 ramp-up;
@@ -18,88 +33,128 @@ base-freq 60 8 0 10 #bbbbbb #000000 #00ff04 0 256;
 #X obj 16 82 ctl-dispatch \$1 \$2 min-amp;
 #X obj 16 106 ctl-dispatch \$1 \$2 max-amp;
 #X obj 17 129 ctl-dispatch \$1 \$2 exp-base;
-#X obj 17 153 ctl-dispatch \$1 \$2 bias;
 #X obj 18 177 ctl-dispatch \$1 \$2 main;
 #X obj 18 200 ctl-dispatch \$1 \$2 phase;
-#X restore 333 21 pd ctl-dispatch;
-#X obj 338 67 adc~ 1;
-#X obj 341 521 dac~ 1;
-#X obj 23 56 nbx 7 14 -1e+37 1e+37 0 0 \$1-\$2-ramp-up \$1-\$2-ramp-up
+#X obj 19 237 ctl-dispatch \$1 \$2 bias-bw;
+#X obj 19 265 ctl-dispatch \$1 \$2 bias-type;
+#X obj 17 153 ctl-dispatch \$1 \$2 bias-pos;
+#X restore 326 21 pd ctl-dispatch;
+#X obj 16 56 nbx 7 14 -1e+37 1e+37 0 0 \$1-\$2-ramp-up \$1-\$2-ramp-up
 ramp-up 75 8 0 10 #bbbbbb #000000 #00ff04 0 256;
-#X obj 23 76 nbx 7 14 -1e+37 1e+37 0 0 \$1-\$2-ramp-down \$1-\$2-ramp-down
+#X obj 16 76 nbx 7 14 -1e+37 1e+37 0 0 \$1-\$2-ramp-down \$1-\$2-ramp-down
 ramp-down 75 8 0 10 #bbbbbb #000000 #00ff04 0 256;
-#X obj 169 76 nbx 5 14 -1e+37 1e+37 0 0 \$1-\$2-min-amp \$1-\$2-min-amp
+#X obj 162 76 nbx 5 14 -1e+37 1e+37 0 0 \$1-\$2-min-amp \$1-\$2-min-amp
 min-amp 60 8 0 10 #bbbbbb #000000 #00ff04 0 256;
-#X obj 169 56 nbx 5 14 -1e+37 1e+37 0 0 \$1-\$2-max-amp \$1-\$2-max-amp
+#X obj 162 56 nbx 5 14 -1e+37 1e+37 0 0 \$1-\$2-max-amp \$1-\$2-max-amp
 max-amp 60 8 0 10 #bbbbbb #000000 #00ff04 0 256;
-#X obj 23 96 nbx 7 14 -1e+37 1e+37 0 0 \$1-\$2-exp-base \$1-\$2-exp-base
+#X obj 16 96 nbx 7 14 -1e+37 1e+37 0 0 \$1-\$2-exp-base \$1-\$2-exp-base
 exp-base 75 8 0 10 #bbbbbb #000000 #00ff04 0 256;
-#X obj 403 145 r \$1-\$2-min-amp;
-#X obj 425 172 r \$1-\$2-max-amp;
-#X obj 359 92 r \$1-\$2-ramp-up;
-#X obj 381 119 r \$1-\$2-ramp-down;
-#X obj 447 199 r \$1-\$2-exp-base;
-#X obj 338 231 leveler~ 140 140;
-#X obj 23 925 vsl16 \$1 \$2 osc-level;
-#X obj 341 576 s \$1-ctl;
-#X msg 341 548 orgel04 level 3 64;
-#X obj 170 97 invert-switch \$1 \$2;
-#X obj 31 282 hsl 224 15 1 16 0 0 \$1-\$2-bias \$1-\$2-bias bias 196
-24 0 10 #bbbbbb #000000 #00ff04 0 1;
-#X obj 275 150 vsl 15 663 0 1 0 0 \$1-\$2-main \$1-\$2-main main -8
--12 0 10 #7c7c7c #ff8300 #00ff04 0 1;
-#X obj 340 285 clone -s 1 orgelmodulvoice 16 \$1 \$2;
-#X obj 365 318 r \$1-\$2-phase;
-#X floatatom 365 395 5 0 0 0 - - - 0;
-#X obj 380 342 loadbang;
-#X msg 380 367 1;
-#X obj 340 420 *~ 1;
-#X obj 450 357 r \$1-\$2-main;
-#X obj 411 444 line~;
-#X obj 341 471 *~;
-#X obj 450 382 route set;
-#X msg 411 419 \$1 50;
-#X floatatom 499 409 5 0 0 0 - - - 0;
-#X obj 552 73 \$0;
-#X floatatom 552 98 5 0 0 0 - - - 0;
-#X obj 551 45 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000;
-#X obj 609 75 \$1;
-#X floatatom 609 100 5 0 0 0 - - - 0;
-#X obj 607 45 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000;
-#X obj 358 736 env~ 8192;
-#X obj 358 761 - 100;
-#X obj 359 790 vu 15 120 empty empty -1 -8 0 10 #404040 #000000 1 0
+#X obj 17 899 vsl16 \$1 \$2 osc-level;
+#X obj 334 376 s \$1-ctl;
+#X msg 334 348 orgel04 level 3 64;
+#X obj 163 97 invert-switch \$1 \$2;
+#X obj 24 357 hsl 224 15 0 1 0 0 \$1-\$2-bias-pos \$1-\$2-bias-pos
+bias-pos 170 24 0 10 #606060 #ff8300 #00ff04 0 1;
+#X obj 272 121 vsl 15 57 0 1 0 0 \$1-\$2-main \$1-\$2-main main -8
+-12 0 10 #606060 #ff8300 #00ff04 0 1;
+#X obj 333 85 clone -s 1 orgelmodulvoice 16 \$1 \$2;
+#X obj 358 118 r \$1-\$2-phase;
+#X floatatom 358 195 5 0 0 0 - - - 0;
+#X obj 373 142 loadbang;
+#X msg 373 167 1;
+#X obj 333 220 *~ 1;
+#X obj 443 157 r \$1-\$2-main;
+#X obj 404 244 line~;
+#X obj 334 271 *~;
+#X obj 443 182 route set;
+#X msg 404 219 \$1 50;
+#X floatatom 492 209 5 0 0 0 - - - 0;
+#X obj 548 118 env~ 8192;
+#X obj 548 143 - 100;
+#X obj 549 172 vu 15 120 empty empty -1 -8 0 10 #404040 #000000 1 0
 ;
+#X msg 746 214 vis \$1 \$2;
+#X obj 340 623 pack 0 0;
+#X obj 335 529 hradio 15 1 0 16 empty empty empty 0 -8 0 10 #fcfcfc
+#000000 #000000 0;
+#X obj 335 549 + 1;
+#X obj 368 552 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 943 99 line~;
+#X msg 943 74 \$1 50;
+#X obj 712 83 *~;
+#X obj 988 213 vsl 15 128 1 16 1 0 empty empty empty 0 -9 0 10 #fcfcfc
+#000000 #000000 0 1;
+#X obj 864 309 env~ 8192;
+#X obj 864 334 - 100;
+#X obj 865 363 vu 15 120 empty empty -1 -8 0 10 #404040 #000000 1 0
+;
+#X obj 367 578 t b f;
+#X floatatom 994 353 5 0 0 0 - - - 0;
+#X obj 1066 137 loadbang;
+#X obj 16 194 vsl16 \$1 \$2 level;
+#X obj 240 186 bias-type \$1 \$2;
+#X obj 17 119 mvu 240 60 16 \$1-\$2-vu \$1-vu-colors;
+#X obj 272 226 vsl 15 128 0 1 0 0 \$1-\$2-bias-bw \$1-\$2-bias-bw bias-bw
+-30 -16 0 10 #606060 #bbbbbb #00ff04 0 1;
+#X msg 1066 166 1;
+#X obj 1075 553 noise~;
+#X obj 1077 578 *~;
+#X msg 1142 553 1 \, 0 10, f 8;
+#X obj 1142 578 line~;
+#X obj 1077 603 dac~ 1;
+#X obj 1004 600 adc~ 1;
+#X obj 1084 708 tabwrite~ \$0-array-rec;
+#X obj 1129 497 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 1004 625 *~ 10;
+#X obj 990 827 table \$0-array-rec 10000;
+#X obj 575 30 adc~ 2;
+#X obj 334 321 dac~ 2;
 #X connect 1 0 2 0;
 #X connect 2 0 0 0;
-#X connect 9 0 1 0;
-#X connect 11 0 23 0;
-#X connect 18 0 23 3;
-#X connect 19 0 23 4;
-#X connect 20 0 23 1;
-#X connect 21 0 23 2;
-#X connect 22 0 23 5;
-#X connect 23 0 30 1;
-#X connect 26 0 25 0;
-#X connect 30 0 35 0;
-#X connect 30 0 48 0;
-#X connect 31 0 32 0;
-#X connect 32 0 35 1;
+#X connect 8 0 1 0;
+#X connect 17 0 16 0;
+#X connect 21 0 26 0;
+#X connect 21 0 33 0;
+#X connect 22 0 23 0;
+#X connect 23 0 26 1;
+#X connect 24 0 25 0;
+#X connect 25 0 23 0;
+#X connect 26 0 29 0;
+#X connect 27 0 30 0;
+#X connect 28 0 29 1;
+#X connect 29 0 67 0;
+#X connect 30 1 31 0;
+#X connect 30 1 32 0;
+#X connect 31 0 28 0;
 #X connect 33 0 34 0;
-#X connect 34 0 32 0;
-#X connect 35 0 38 0;
-#X connect 36 0 39 0;
-#X connect 37 0 38 1;
-#X connect 38 0 12 0;
-#X connect 39 1 40 0;
-#X connect 39 1 41 0;
-#X connect 40 0 37 0;
-#X connect 42 0 43 0;
+#X connect 34 0 35 0;
+#X connect 36 0 21 0;
+#X connect 37 0 36 0;
+#X connect 38 0 39 0;
+#X connect 39 0 37 0;
+#X connect 40 0 48 0;
+#X connect 41 0 43 1;
+#X connect 42 0 41 0;
+#X connect 43 0 45 0;
+#X connect 43 0 21 1;
 #X connect 44 0 42 0;
+#X connect 44 0 49 0;
 #X connect 45 0 46 0;
-#X connect 47 0 45 0;
-#X connect 48 0 49 0;
-#X connect 49 0 50 0;
-#X coords 0 -1 1 1 300 820 1 0 0;
+#X connect 46 0 47 0;
+#X connect 48 0 37 0;
+#X connect 48 1 37 1;
+#X connect 50 0 55 0;
+#X connect 55 0 44 0;
+#X connect 56 0 57 0;
+#X connect 57 0 60 0;
+#X connect 57 0 62 0;
+#X connect 58 0 59 0;
+#X connect 59 0 57 1;
+#X connect 61 0 64 0;
+#X connect 63 0 62 0;
+#X connect 63 0 58 0;
+#X connect 64 0 62 0;
+#X connect 66 0 43 0;
+#X coords 0 -1 1 1 300 1020 1 0 0;

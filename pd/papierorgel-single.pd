@@ -1,20 +1,11 @@
 #N struct 1264-slider float x float y float w float h float c;
-#N struct 1525-slider float x float y float w float h float c;
-#N struct 1786-slider float x float y float w float h float c;
-#N struct 2047-slider float x float y float w float h float c;
-#N struct 2308-slider float x float y float w float h float c;
-#N struct 2569-slider float x float y float w float h float c;
-#N canvas 1920 2 533 1016 12;
+#N canvas 0 2 317 985 12;
 #X declare -path lib;
 #X listbox 156 1053 40 0 0 0 - - - 36;
 #X obj 22 1078 list prepend list;
 #X obj 22 1103 list trim;
 #X obj 3 5 orgelmodul \$0 orgel01;
 #X obj 22 1053 r \$0-ctl;
-#X obj 310 5 orgelmodul \$0 orgel02;
-#X obj 617 5 orgelmodul \$0 orgel03;
-#X obj 1231 5 orgelmodul \$0 orgel05;
-#X obj 924 5 orgelmodul \$0 orgel04;
 #N canvas 1166 25 566 735 osc-handling 0;
 #X obj 37 62 oscparse;
 #X obj 36 87 list trim;
@@ -71,7 +62,6 @@
 #X floatatom 305 1163 5 0 0 0 - - - 0;
 #X obj 305 1117 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
 #000000 #000000;
-#X obj 1538 5 orgelmodul \$0 orgel06;
 #X obj 21 1129 declare -path lib;
 #X obj 162 1183 print;
 #N canvas 653 33 976 562 init 0;
@@ -103,5 +93,5 @@
 #X connect 1 0 2 0;
 #X connect 2 0 0 0;
 #X connect 4 0 1 0;
-#X connect 10 0 11 0;
-#X connect 12 0 10 0;
+#X connect 6 0 7 0;
+#X connect 8 0 6 0;
