@@ -1,31 +1,31 @@
-#N struct 5531-rectangle float x float c;
-#N struct 5531-pixel float x0 float y0;
-#N struct 5531-slider float x float y float w float h float c;
-#N struct 5549-rectangle float x float c;
-#N struct 5549-pixel float x0 float y0;
-#N struct 5549-slider float x float y float w float h float c;
-#N struct 5567-rectangle float x float c;
-#N struct 5567-pixel float x0 float y0;
-#N struct 5567-slider float x float y float w float h float c;
-#N struct 5596-rectangle float x float c;
-#N struct 5596-pixel float x0 float y0;
-#N struct 5596-slider float x float y float w float h float c;
-#N struct 5759-rectangle float x float c;
-#N struct 5759-pixel float x0 float y0;
-#N struct 5759-slider float x float y float w float h float c;
-#N struct 5761-slider float x float y float w float h float c;
+#N struct 1740-rectangle float x float c;
+#N struct 1740-pixel float x0 float y0;
+#N struct 1740-slider float x float y float w float h float c;
+#N struct 1758-rectangle float x float c;
+#N struct 1758-pixel float x0 float y0;
+#N struct 1758-slider float x float y float w float h float c;
+#N struct 1776-rectangle float x float c;
+#N struct 1776-pixel float x0 float y0;
+#N struct 1776-slider float x float y float w float h float c;
+#N struct 1805-rectangle float x float c;
+#N struct 1805-pixel float x0 float y0;
+#N struct 1805-slider float x float y float w float h float c;
+#N struct 1968-rectangle float x float c;
+#N struct 1968-pixel float x0 float y0;
+#N struct 1968-slider float x float y float w float h float c;
+#N struct 1970-slider float x float y float w float h float c;
 #N canvas 470 84 1279 1012 12;
 #X declare -path lib;
 #X listbox 334 495 20 0 0 0 - - - 0;
 #X obj 334 441 list prepend list;
 #X obj 334 466 list trim;
-#X obj 0 0 cnv 15 300 1020 empty empty \$2 20 24 0 18 #404040 #00ff04
+#X obj 0 0 cnv 15 180 610 empty empty \$2 20 24 0 18 #404040 #00ff04
 0;
-#X obj 162 22 nbx 5 14 -1e+37 1e+37 0 0 \$1-\$2-base-freq \$1-\$2-base-freq
-base-freq 60 8 0 10 #bbbbbb #000000 #00ff04 0 256;
-#X obj 16 388 vsl16 \$1 \$2 delay;
-#X obj 16 556 vsl16 \$1 \$2 q;
-#X obj 16 724 vsl16 \$1 \$2 gain;
+#X obj 95 38 nbx 7 9 -1e+37 1e+37 0 0 \$1-\$2-base-freq \$1-\$2-base-freq
+base-freq 46 4 0 6 #bbbbbb #000000 #00ff04 0 256;
+#X obj 10 268 vsl16 \$1 \$2 delay;
+#X obj 10 351 vsl16 \$1 \$2 q;
+#X obj 10 434 vsl16 \$1 \$2 gain;
 #X obj 334 416 r \$1-ctl;
 #N canvas 266 8 685 1005 ctl-dispatch 0;
 #X obj 16 9 ctl-dispatch \$1 \$2 base-freq;
@@ -40,24 +40,24 @@ base-freq 60 8 0 10 #bbbbbb #000000 #00ff04 0 256;
 #X obj 19 265 ctl-dispatch \$1 \$2 bias-type;
 #X obj 17 153 ctl-dispatch \$1 \$2 bias-pos;
 #X restore 326 21 pd ctl-dispatch;
-#X obj 16 56 nbx 7 14 -1e+37 1e+37 0 0 \$1-\$2-ramp-up \$1-\$2-ramp-up
-ramp-up 75 8 0 10 #bbbbbb #000000 #00ff04 0 256;
-#X obj 16 76 nbx 7 14 -1e+37 1e+37 0 0 \$1-\$2-ramp-down \$1-\$2-ramp-down
-ramp-down 75 8 0 10 #bbbbbb #000000 #00ff04 0 256;
-#X obj 162 76 nbx 5 14 -1e+37 1e+37 0 0 \$1-\$2-min-amp \$1-\$2-min-amp
-min-amp 60 8 0 10 #bbbbbb #000000 #00ff04 0 256;
-#X obj 162 56 nbx 5 14 -1e+37 1e+37 0 0 \$1-\$2-max-amp \$1-\$2-max-amp
-max-amp 60 8 0 10 #bbbbbb #000000 #00ff04 0 256;
-#X obj 16 96 nbx 7 14 -1e+37 1e+37 0 0 \$1-\$2-exp-base \$1-\$2-exp-base
-exp-base 75 8 0 10 #bbbbbb #000000 #00ff04 0 256;
-#X obj 17 899 vsl16 \$1 \$2 osc-level;
+#X obj 9 38 nbx 7 9 -1e+37 1e+37 0 0 \$1-\$2-ramp-up \$1-\$2-ramp-up
+ramp-up 46 4 0 6 #bbbbbb #000000 #00ff04 0 256;
+#X obj 9 51 nbx 7 9 -1e+37 1e+37 0 0 \$1-\$2-ramp-down \$1-\$2-ramp-down
+ramp-down 46 4 0 6 #bbbbbb #000000 #00ff04 0 256;
+#X obj 95 63 nbx 7 9 -1e+37 1e+37 0 0 \$1-\$2-min-amp \$1-\$2-min-amp
+min-amp 46 4 0 6 #bbbbbb #000000 #00ff04 0 256;
+#X obj 95 50 nbx 7 9 -1e+37 1e+37 0 0 \$1-\$2-max-amp \$1-\$2-max-amp
+max-amp 46 4 0 6 #bbbbbb #000000 #00ff04 0 256;
+#X obj 9 64 nbx 7 9 -1e+37 1e+37 0 0 \$1-\$2-exp-base \$1-\$2-exp-base
+exp-base 46 4 0 6 #bbbbbb #000000 #00ff04 0 256;
+#X obj 10 517 vsl16 \$1 \$2 osc-level;
 #X obj 334 376 s \$1-ctl;
 #X msg 334 348 orgel04 level 3 64;
-#X obj 163 97 invert-switch \$1 \$2;
-#X obj 24 357 hsl 224 15 0 1 0 0 \$1-\$2-bias-pos \$1-\$2-bias-pos
-bias-pos 170 24 0 10 #606060 #ff8300 #00ff04 0 1;
-#X obj 272 121 vsl 15 57 0 1 0 0 \$1-\$2-main \$1-\$2-main main -8
--12 0 10 #606060 #ff8300 #00ff04 0 1;
+#X obj 96 79 invert-switch \$1 \$2;
+#X obj 9 248 hsl 122 8 0 1 0 0 \$1-\$2-bias-pos \$1-\$2-bias-pos bias-pos
+85 16 0 7 #606060 #ff8300 #00ff04 0 1;
+#X obj 154 102 vsl 8 120 0 1 0 0 \$1-\$2-main \$1-\$2-main main -8
+-12 0 8 #606060 #ff8300 #00ff04 0 1;
 #X obj 333 85 clone -s 1 orgelmodulvoice 16 \$1 \$2;
 #X obj 358 118 r \$1-\$2-phase;
 #X floatatom 358 195 5 0 0 0 - - - 0;
@@ -89,11 +89,8 @@ bias-pos 170 24 0 10 #606060 #ff8300 #00ff04 0 1;
 #X obj 865 363 vu 15 120 empty empty -1 -8 0 10 #404040 #000000 1 0
 ;
 #X obj 367 578 t b f;
-#X obj 16 196 vsl16 \$1 \$2 level;
-#X obj 240 186 bias-type \$1 \$2;
-#X obj 17 119 mvu 240 60 16 \$1-\$2-vu \$1-vu-colors;
-#X obj 272 226 vsl 15 128 0 1 0 0 \$1-\$2-bias-bw \$1-\$2-bias-bw bias-bw
--30 -16 0 10 #606060 #bbbbbb #00ff04 0 1;
+#X obj 10 166 vsl16 \$1 \$2 level;
+#X obj 118 147 bias-type \$1 \$2;
 #X obj 1075 553 noise~;
 #X obj 1077 578 *~;
 #X msg 1142 553 1 \, 0 10, f 8;
@@ -109,6 +106,9 @@ bias-pos 170 24 0 10 #606060 #ff8300 #00ff04 0 1;
 #X obj 575 30 adc~ 1;
 #X obj 960 48 r \$1-gain;
 #X obj 677 22 declare -path lib;
+#X obj 10 102 mvu 120 40 16 \$1-\$2-vu \$1-vu-colors;
+#X obj 136 184 vsl 8 64 0 1 0 0 \$1-\$2-bias-bw \$1-\$2-bias-bw bias-bw
+-30 -16 0 7 #606060 #bbbbbb #00ff04 0 1;
 #X connect 1 0 2 0;
 #X connect 2 0 0 0;
 #X connect 8 0 1 0;
@@ -122,7 +122,7 @@ bias-pos 170 24 0 10 #606060 #ff8300 #00ff04 0 1;
 #X connect 26 0 29 0;
 #X connect 27 0 30 0;
 #X connect 28 0 29 1;
-#X connect 29 0 62 0;
+#X connect 29 0 60 0;
 #X connect 30 1 31 0;
 #X connect 30 1 32 0;
 #X connect 31 0 28 0;
@@ -141,15 +141,15 @@ bias-pos 170 24 0 10 #606060 #ff8300 #00ff04 0 1;
 #X connect 45 0 46 0;
 #X connect 47 0 37 0;
 #X connect 47 1 37 1;
+#X connect 50 0 51 0;
+#X connect 51 0 54 0;
+#X connect 51 0 56 0;
 #X connect 52 0 53 0;
-#X connect 53 0 56 0;
-#X connect 53 0 58 0;
-#X connect 54 0 55 0;
-#X connect 55 0 53 1;
-#X connect 57 0 60 0;
-#X connect 59 0 58 0;
-#X connect 59 0 54 0;
-#X connect 60 0 58 0;
-#X connect 63 0 43 0;
-#X connect 64 0 42 0;
-#X coords 0 -1 1 1 300 1300 1 0 0;
+#X connect 53 0 51 1;
+#X connect 55 0 58 0;
+#X connect 57 0 56 0;
+#X connect 57 0 52 0;
+#X connect 58 0 56 0;
+#X connect 61 0 43 0;
+#X connect 62 0 42 0;
+#X coords 0 -1 1 1 180 610 1 0 0;

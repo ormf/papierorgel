@@ -1,0 +1,68 @@
+#N canvas 1045 124 538 602 12;
+#X obj 173 39 r \$0-bng;
+#X obj 173 67 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 173 87 sel 0 1;
+#X obj 173 213 s \$0-cnv;
+#X floatatom 225 138 5 0 0 0 - - - 0;
+#X msg 173 171 label phase \, color 16 -1 -1;
+#X msg 198 116 label invert \, color 13 0 0;
+#X obj 285 5 loadbang;
+#X msg 289 72 0;
+#X obj 260 354 s \$1-ctl;
+#X obj 258 300 pack 0 s;
+#X obj 311 264 symbol \$2;
+#X obj 292 42 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X msg 258 325 \$2 phase \$1;
+#X msg 236 254 -1;
+#X msg 197 255 1;
+#X obj 35 91 r \$1-ctl;
+#X obj 35 115 route \$2;
+#X obj 35 139 route phase;
+#X floatatom 35 165 5 0 0 0 - - - 0;
+#X obj 35 188 sel -1 1;
+#X msg 35 250 1;
+#X msg 64 223 0;
+#X msg 110 103 set \$1;
+#X obj 34 285 sel 0 1;
+#X obj 10 10 bng 8 250 50 0 \$0-bng \$0-bng empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 18 10 bng 8 250 50 0 \$0-bng \$0-bng empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 26 10 bng 8 250 50 0 \$0-bng \$0-bng empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 10 10 cnv 8 24 8 \$0-cnv \$0-cnv phase 2 5 0 5 #14e814 #000000
+0;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 5 0;
+#X connect 2 0 15 0;
+#X connect 2 1 6 0;
+#X connect 2 1 14 0;
+#X connect 4 0 5 0;
+#X connect 5 0 3 0;
+#X connect 6 0 3 0;
+#X connect 7 0 12 0;
+#X connect 8 0 1 0;
+#X connect 10 0 13 0;
+#X connect 11 0 10 1;
+#X connect 12 0 8 0;
+#X connect 12 0 11 0;
+#X connect 13 0 9 0;
+#X connect 14 0 10 0;
+#X connect 15 0 10 0;
+#X connect 16 0 17 0;
+#X connect 17 0 18 0;
+#X connect 18 0 19 0;
+#X connect 19 0 20 0;
+#X connect 20 0 21 0;
+#X connect 20 1 22 0;
+#X connect 21 0 23 0;
+#X connect 21 0 24 0;
+#X connect 22 0 23 0;
+#X connect 22 0 24 0;
+#X connect 23 0 1 0;
+#X connect 24 0 5 0;
+#X connect 24 1 6 0;
+#X coords 0 -1 1 1 24 8 2 10 10;
